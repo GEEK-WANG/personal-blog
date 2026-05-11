@@ -1,0 +1,486 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* 背景视频 */
+.page-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#bgImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 移动按钮 */
+.mobile-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.mobile-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+    color: #00ff88;
+}
+
+.mobile-btn:active {
+    transform: scale(0.92);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* 打开状态图标旋转 */
+#menuToggle i {
+    transition: transform 0.4s ease;
+}
+#menuToggle.active i {
+    transform: rotate(180deg);
+    color: #00ff88;
+}
+
+/* 容器 */
+.container {
+    width: 92%;
+    max-width: 1100px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px auto;
+    position: relative;
+    width: 110px;
+    height: 110px;
+}
+
+.avatar img {
+    width: 102px;
+    height: 102px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    background: #000;
+}
+
+.avatar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 2px;
+    background: conic-gradient(
+        #ff0080, #ff00cc, #00ccff, #00ffcc, #00ff80, #ff0080
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: avatarSpin 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes avatarSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.info-row:last-child {
+    margin: 0;
+}
+
+.info-row i {
+    color: #00ff88;
+}
+
+.tag-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 11px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* 时间轴样式 */
+.timeline {
+    position: relative;
+    padding-left: 28px !important;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px !important;
+    top: 15px !important;
+    bottom: 15px !important;
+    width: 2px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.item {
+    position: relative !important;
+    margin-bottom: 22px !important;
+    padding-left: 0 !important;
+}
+
+.dot {
+    position: absolute !important;
+    left: -18px !important;
+    top: 4px !important;
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+}
+
+.item.active .dot {
+    background: #00ff88 !important;
+    box-shadow: 0 0 8px #00ff88 !important;
+}
+
+.item .con p {
+    font-size: 15px !important;
+    margin-bottom: 2px !important;
+    font-weight: bold !important;
+}
+
+.item .con small {
+    opacity: 0.7 !important;
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 主内容 */
+.main {
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 50px 30px;
+    scrollbar-width: none;
+    overflow-x: hidden;
+}
+
+.main::-webkit-scrollbar {display:none;}
+
+.main-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.profile {
+    margin-bottom: 40px;
+}
+
+.profile h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.profile .name {
+    color: #00ff88;
+}
+
+.bio {
+    margin-top: 10px;
+}
+
+.bio p {
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bio i {
+    color: #00ff88;
+    margin-right: 8px;
+}
+
+/* 章节 */
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff88;
+}
+
+/* 日记、文章、生活、记录项 */
+.diary-item,
+.article-item,
+.life-item,
+.record-item {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+.diary-item:last-child,
+.article-item:last-child,
+.life-item:last-child,
+.record-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.diary-item h3,
+.article-item h3,
+.record-item h3 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.article-date,
+.record-date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.diary-item p,
+.article-item p,
+.life-item p {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.record-item ul {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.record-item li {
+    position: relative;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.record-item li::before {
+    content: '•';
+    position: absolute;
+    left: -20px;
+    color: #00ff88;
+    font-weight: bold;
+}
+
+/* 展开/收起按钮 */
+.toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #00ff88;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: rgba(0, 255, 136, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 页脚 */
+footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .mobile-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        transform: translateX(-100%);
+        transition: 0.3s ease;
+        background: rgba(0, 0, 0, 0.7);
+        width: 280px;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main {
+        width: 100vw;
+        padding: 80px 22px 20px 22px;
+    }
+}
+
+/* 日期样式 */
+.date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* 图片样式 */
+.diary-item img,
+.article-item img,
+.life-item img,
+.record-item img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+/* 加载动画 */
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+
+
+/* 日记、文章、生活、记录项 */
+.diary-item p,
+.article-item p,
+.life-item p {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 记录列表项 */
+.record-item li {
+    position: relative;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 页面标题 */
+.profile h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 个人简介 */
+.bio p {
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 章节标题 */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff88;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}

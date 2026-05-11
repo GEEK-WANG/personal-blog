@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:/Users/GEEK/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/scripts/start-server.sh *)",
+      "Bash(npm --version)",
+      "Bash(git --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git config *)",
+      "Skill(update-config)",
+      "Bash(git *)",
+      "Bash(npx --yes create-quartz@latest blog)",
+      "WebSearch",
+      "Bash(npm install *)",
+      "Bash(npx quartz *)",
+      "Bash(cmd *)",
+      "Bash(powershell *)",
+      "Bash(npx tsc *)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch \".obsidian/\" \"Mathnotes/.obsidian/\"' --prune-empty --tag-name-filter cat -- --all)",
+      "Bash(gh run *)",
+      "Bash(node quartz/bootstrap-cli.mjs build -d .. --verbose)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:geek-wang.github.io)",
+      "Bash(curl -sL \"https://geek-wang.github.io/personal-blog/\")",
+      "Bash(curl -sv \"https://geek-wang.github.io/personal-blog/\")",
+      "Bash(rm -rf content)",
+      "Bash(mkdir content *)",
+      "Bash(cmd.exe *)",
+      "Bash(ping *)",
+      "Bash(ssh *)",
+      "Bash(mkdir -p ~/.ssh)",
+      "Bash(ssh-keyscan github.com)",
+      "Bash(node quartz/bootstrap-cli.mjs build -d ..)",
+      "Bash(xargs grep -l \"Latex\\\\|katex\\\\|math\")",
+      "Bash(grep -n \"\\\\$\\\\$.*begin\" \"C:/Users/GEEK/Documents/Obsidian Vault/Mathnotes/零基础/数学归纳法.md\")",
+      "Bash(grep *)",
+      "Bash(python3 fix_math.py)",
+      "Bash(node fix_math.js)"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  }
+}

@@ -29,7 +29,8 @@ $$
 \end{align}
 $$
 ## 分式与根式
-$$\begin{align}
+$$
+\begin{align}
 &\frac2 3,\frac{1}{x+y} \\
 &\frac{\dfrac1 x + 1}{\dfrac1 y + 1} \\
 &\sqrt2,\sqrt{x+y},\sqrt[n]{a^{b}}
@@ -54,7 +55,8 @@ $$
 \end{align}
 $$
 ## 大型运算符 
-$$\begin{align}
+$$
+\begin{align}
 \sum,\prod \\
 \sum_i,\sum_{i=o}^N \\
 \frac{\sum\limits_{i=0}^n x_i  + y}{x + y} \\
@@ -124,7 +126,8 @@ $$
 $\bf A,\bf B^\rm T$
 ## 实战例子
 #### 正态分布
-$$\begin{aligned}
+$$
+\begin{aligned}
 &f(x)=\frac {1}{\sqrt {2\pi}\sigma}\rm e^{-\frac {(x-\mu)^{2}}{2\sigma^{2}}}\\
 &f(x)=\frac {1}{\sqrt {2\pi}\sigma}\exp \left[{-\frac {(x-\mu)^{2}}{2\sigma^{2}}}\right]
 \end{aligned}
@@ -139,7 +142,8 @@ $$
 x(n) = \frac 1{2\pi}\int_{-\pi}^{\pi}X\left(\text e^{j\omega}\right)\text e^{j\omega n}\,\text d\omega
 \end{align}
 $$
-$$\begin{aligned}
+$$
+\begin{aligned}
 &多行\\
 &格式
 \end{aligned}

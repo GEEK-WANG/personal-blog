@@ -1,6 +1,7 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 import { ExplicitPublish } from "./quartz/plugins/filters/PublishFilter"
+import { NormalizeMath } from "./quartz/plugins/transformers/normalizeMath"
 
 /**
  * Quartz 4 Configuration — MathNotes
@@ -75,6 +76,12 @@ const config: QuartzConfig = {
           dark: "github-dark",
         },
       }),
+      NormalizeMath(),
+      Plugin.Latex({
+        renderEngine: "katex",
+        customMacros: {},
+        katexOptions: { strict: false },
+      }),
       Plugin.ObsidianFlavoredMarkdown({
         enableInHtmlEmbed: false,
         parseTags: true,
@@ -86,10 +93,6 @@ const config: QuartzConfig = {
       Plugin.CrawlLinks({
         markdownLinkResolution: "shortest",
         openLinksInNewTab: false,
-      }),
-      Plugin.Latex({
-        renderEngine: "katex",
-        customMacros: {},
       }),
       Plugin.Description({
         descriptionLength: 200,

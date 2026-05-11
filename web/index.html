@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mo Yan</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+
+<body>
+
+    <div class="mobile-btn" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="page-bg">
+        <img src="./images/back.png" alt="背景" id="bgImage">
+    </div>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="avatar">
+                <img src="./images/icon.png" alt="avatar">
+            </div>
+            <div class="card">
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>中国 · 湖北</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-university"></i>
+                    <span>湖北孝感美JA职院</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="tag-group">
+                    <span class="tag">网瘾</span>
+                    <span class="tag">XXS</span>
+                    <span class="tag">大一</span>
+                </div>
+                <div class="tag-group">
+                    <span class="tag">MOBA</span>
+                    <span class="tag">GAME</span>
+                    <span class="tag">抖音</span>
+                </div>
+                <div class="tag-group">
+                    <span class="tag">前端</span>
+                    <span class="tag">算法</span>
+                    <span class="tag">html</span>
+                </div>
+                <div class="tag-group">
+                    <span class="tag">C/C++</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+            </div>
+            <div class="card timeline">
+                <div class="item active">
+                    <div class="dot"></div>
+                    <div class="con">
+                        <p>2026-04</p>
+                        <small>学习进行中...</small>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="dot"></div>
+                    <div class="con">
+                        <p>2023-08</p>
+                        <small>努力学习</small>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="dot"></div>
+                    <div class="con">
+                        <p>2022-02</p>
+                        <small>走火入魔</small>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="dot"></div>
+                    <div class="con">
+                        <p>2020-01</p>
+                        <small>初次见面</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="main-inner">
+                <div class="profile">
+                    <h1>Hello, I'm <span class="name">Mo Yan</span></h1>
+                    <div class="bio">
+                        <p><i class="fa-solid fa-heart"></i> Rose and U</p>
+                        <p><i class="fa-solid fa-heart-circle-exclamation"></i> Hope to be carefree.</p>
+                    </div>
+                    <div class="social">
+                        <a href="https://github.com/moyanyyds" data-name="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="./email/index.html" data-name="E-mail" target="_blank"><i class="fas fa-envelope"></i></a>
+                        <a href="https://t.me/MY0507" data-name="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://qm.qq.com/cgi-bin/qm/qr?k=0dAZh4CkCxqk3zHGnYSop4VH6HRyQ7Av" data-name=" &nbsp;&nbsp;QQ" target="_blank"><i class="fa-brands fa-qq"></i></a>
+                    </div>
+                </div>
+
+                <div class="pixel-box">
+                    <div class="pixel-matrix" id="pixelMatrix"></div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <!-- TIES 加链接 -->
+                <div class="section ties-section">
+                    <div class="section-title">
+                        <i class="fas fa-info-circle"></i> TIES
+                    </div>
+                    <div class="grid-container ties-grid">
+                        <a href="./my/diary.html" class="grid-item card ties-card" target="_blank">
+                            <div class="card-top">日记</div>
+                            <div class="card-middle">记录糜烂的日常</div>
+                            <div class="card-icon">📖</div>
+                        </a>
+                        <a href="./my/article.html" class="grid-item card ties-card" target="_blank">
+                            <div class="card-top">文章</div>
+                            <div class="card-middle">碎碎念的文字</div>
+                            <div class="card-icon">✍️</div>
+                        </a>
+                        <a href="./my/life.html" class="grid-item card ties-card" target="_blank">
+                            <div class="card-top">生活</div>
+                            <div class="card-middle">日常的小美好</div>
+                            <div class="card-icon">🍃</div>
+                        </a>
+                        <a href="./my/record.html" class="grid-item card ties-card" target="_blank">
+                            <div class="card-top">记录</div>
+                            <div class="card-middle">时光的碎片</div>
+                            <div class="card-icon">📝</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 加链接 -->
+                <div class="section project-section">
+                    <div class="section-title">
+                        <i class="fas fa-briefcase"></i> PROJECT
+                    </div>
+                    <div class="grid-container project-grid">
+                        <a href="./project/index.html" class="grid-item card project-card" target="_blank">
+                            <div class="card-top">项目</div>
+                            <div class="card-middle">折腾的小玩意</div>
+                            <div class="card-icon">🔧</div>
+                        </a>
+                        <a href="https://moyanzuishuai.lanzout.com/b0o00dyna" class="grid-item card project-card" target="_blank">
+                            <div class="card-top">云盘</div>
+                            <div class="card-middle">私有的存储空间</div>
+                            <div class="card-icon">☁️</div>
+                        </a>
+                        <div class="grid-item card project-card" onclick="openIntroModal()">
+                            <div class="card-top">介绍</div>
+                            <div class="card-middle">网站历史</div>
+                            <div class="card-icon">📋</div>
+                        </div>
+                        <div class="grid-item card project-card" onclick="openAboutModal()">
+                            <div class="card-top">关于</div>
+                            <div class="card-middle">碎碎念的了解</div>
+                            <div class="card-icon">ℹ️</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKILLS 加 C C++ Java Python -->
+                <div class="section skills-section">
+                    <div class="section-title">
+                        <i class="fas fa-code"></i> SKILLS
+                    </div>
+                    <div class="card skills-big-card">
+                        <div class="skill-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                        <div class="skill-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                        <div class="skill-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                        <div class="skill-item"><i class="fab fa-linux"></i><span>Linux</span></div>
+                        <div class="skill-item"><i class="fab fa-github"></i><span>Git</span></div>
+                        <div class="skill-item"><i class="fas fa-database"></i><span>MySQL</span></div>
+                        <div class="skill-item"><i class="fab fa-c"></i><span>C</span></div>
+                        <div class="skill-item"><i class="fab fa-c"></i><span>C++</span></div>
+                        <div class="skill-item"><i class="fab fa-java"></i><span>Java</span></div>
+                        <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
+                    </div>
+                </div>
+
+                <footer>
+                    <p>© 2025 Mo Yan. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右上角悬浮音乐播放器 -->
+    <!-- 音乐播放器 -->
+    <div class="music-player" id="musicPlayer">
+        <div class="left-part">
+            <div class="song-name" id="songName">加载中...</div>
+            <button class="play-btn" id="playBtn">
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
+        <button class="toggle-btn" id="toggleBtn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+
+    <audio id="audio"></audio>
+
+    <!-- 新增弹窗 -->
+    <!-- 欢迎弹窗 → 每日一言 + 天气 + 历史上的今天 -->
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-item">
+                <strong>📝 每日一言</strong>
+                <p id="dailyWord">加载中...</p>
+            </div>
+            <div class="modal-item">
+                <strong>🌤️ 今日天气</strong>
+                <p id="weatherInfo">加载中...</p>
+            </div>
+            <div class="modal-item">
+                <strong>🗓️ 程序员历史上的今天</strong>
+                <p id="historyToday">加载中...</p>
+            </div>
+            <button class="modal-btn" id="closeModal">OK</button>
+        </div>
+    </div>
+
+    <!-- 介绍和关于弹窗 -->
+    <div id="introModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2>网站历史</h2>
+            <div id="introContent" class="modal-content">加载中...</div>
+            <button class="modal-btn" onclick="closeIntroModal()">关闭</button>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h2>关于我</h2>
+            <div id="aboutContent" class="modal-content">加载中...</div>
+            <button class="modal-btn" onclick="closeAboutModal()">关闭</button>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
