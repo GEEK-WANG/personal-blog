@@ -2,6 +2,7 @@
 blog/node_modules/
 blog/public/
 blog/.quartz-cache/
+blog/content/
 
 # Obsidian
 .obsidian/workspace.json

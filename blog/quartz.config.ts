@@ -3,22 +3,31 @@ import * as Plugin from "./quartz/plugins"
 import { ExplicitPublish } from "./quartz/plugins/filters/PublishFilter"
 
 /**
- * Quartz 4 Configuration
+ * Quartz 4 Configuration — MathNotes
  *
  * See https://quartz.jzhao.xyz/configuration for more information.
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
+    pageTitle: "📐 MathNotes",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    analytics: null,
+    locale: "zh-CN",
+    baseUrl: "YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME",
+    ignorePatterns: [
+      "blog",
+      ".obsidian",
+      ".git",
+      ".github",
+      "node_modules",
+      ".superpowers",
+      "docs",
+      "web",
+      "templates",
+      "private",
+      "__test-",
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -37,19 +46,19 @@ const config: QuartzConfig = {
           dark: "#2b2b2b",
           secondary: "#284b63",
           tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          highlight: "rgba(143, 204, 237, 0.15)",
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#1a1a2e",
+          lightgray: "#16213e",
+          gray: "#4a6fa5",
+          darkgray: "#b0c7e0",
+          dark: "#e0e8f0",
+          secondary: "#64b5f6",
+          tertiary: "#90caf9",
+          highlight: "rgba(100, 181, 246, 0.12)",
+          textHighlight: "#64b5f644",
         },
       },
     },
@@ -65,14 +74,27 @@ const config: QuartzConfig = {
           light: "github-light",
           dark: "github-dark",
         },
-        keepBackground: false,
       }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      Plugin.ObsidianFlavoredMarkdown({
+        enableInHtmlEmbed: false,
+        parseTags: true,
+        parseBlockReferences: true,
+        enableCheckbox: true,
+      }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
-      Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
+      Plugin.CrawlLinks({
+        markdownLinkResolution: "shortest",
+        openLinksInNewTab: false,
+      }),
+      Plugin.Latex({
+        renderEngine: "katex",
+        customMacros: {},
+      }),
+      Plugin.Description({
+        descriptionLength: 200,
+        replaceExternalLinks: true,
+      }),
     ],
     filters: [ExplicitPublish()],
     emitters: [
@@ -83,14 +105,11 @@ const config: QuartzConfig = {
       Plugin.TagPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,
-        enableRSS: true,
+        enableRSS: false,
       }),
       Plugin.Assets(),
       Plugin.Static(),
-      Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
     ],
   },
 }
