@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "zh-CN",
-    baseUrl: "YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME",
+    baseUrl: "geek-wang.github.io/personal-blog",
     ignorePatterns: [
       "blog",
       ".obsidian",
