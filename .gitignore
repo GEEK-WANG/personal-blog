@@ -1,0 +1,17 @@
+# Quartz
+blog/node_modules/
+blog/public/
+blog/.quartz-cache/
+
+# Obsidian
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/hotkeys.json
+
+# System
+.DS_Store
+Thumbs.db
+
+# Superpowers
+.superpowers/
+docs/superpowers/plans/
