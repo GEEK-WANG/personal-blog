@@ -1,3 +1,87 @@
-@use "./base.scss";
+/* ========== 学术蓝灰暗色主题 ========== */
 
-// put your custom CSS here!
+body {
+  background-color: #0d1117;
+}
+
+/* 毛玻璃卡片效果 */
+article.popover-hint,
+.page > article,
+.backlinks > .backlink,
+.recent-notes > ul > li,
+.tag-list > li,
+.explorer > .folders,
+.search > .search-container {
+  background: rgba(22, 33, 62, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(100, 181, 246, 0.12) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 链接用学术蓝 */
+a,
+a:visited {
+  color: #64b5f6 !important;
+  text-decoration: none;
+}
+a:hover {
+  color: #90caf9 !important;
+}
+
+/* 页面标题渐变 */
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #64b5f6, #90caf9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LaTeX 公式区域 */
+.katex-display {
+  background: rgba(100, 181, 246, 0.04);
+  border-radius: 8px;
+  padding: 8px 0;
+  overflow-x: auto;
+}
+
+/* Callout 提示框 */
+.callout {
+  border-left: 3px solid #64b5f6 !important;
+  background: rgba(100, 181, 246, 0.06) !important;
+  border-radius: 0 8px 8px 0 !important;
+  padding: 12px 16px !important;
+  margin: 16px 0 !important;
+}
+
+/* 搜索框 */
+.search > .search-container > input {
+  background: rgba(22, 33, 62, 0.6) !important;
+  border: 1px solid rgba(100, 181, 246, 0.2) !important;
+  border-radius: 8px !important;
+  color: #e0e8f0 !important;
+}
+
+/* 代码块 */
+pre {
+  background: rgba(22, 33, 62, 0.8) !important;
+  border: 1px solid rgba(100, 181, 246, 0.15) !important;
+  border-radius: 8px !important;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d1117; }
+::-webkit-scrollbar-thumb { background: #4a6fa5; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #64b5f6; }
+
+/* 页脚 */
+footer {
+  color: #4a6fa5 !important;
+  text-align: center !important;
+  padding: 24px 0 !important;
+  font-size: 0.85rem !important;
+}
