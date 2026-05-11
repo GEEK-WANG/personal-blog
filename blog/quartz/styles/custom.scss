@@ -15,6 +15,22 @@ html:root[saved-theme="dark"] {
   --textHighlight: #64b5f644;
 }
 
+/* --- 全局细节 --- */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(100, 181, 246, 0.3);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #64b5f6 !important;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* --- 基础文字颜色 --- */
 body {
   background-color: #0d1117 !important;
@@ -91,30 +107,40 @@ article blockquote, article span {
 }
 
 /* --- LaTeX 公式区域 --- */
-.katex-display {
-  background: rgba(100, 181, 246, 0.04);
-  border-radius: 8px;
-  padding: 8px 0;
-  overflow-x: auto;
-}
-
 .katex {
   color: #e0e8f0;
+  font-size: 1.05em;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  padding: 12px 8px;
+  background: rgba(100, 181, 246, 0.04);
+  border-radius: 8px;
+  overflow-x: auto;
 }
 
 /* --- Callout 提示框 --- */
 .callout {
-  border-left: 3px solid #64b5f6 !important;
+  border-left: 4px solid #64b5f6 !important;
   background: rgba(100, 181, 246, 0.06) !important;
-  border-radius: 0 8px 8px 0 !important;
-  padding: 12px 16px !important;
-  margin: 16px 0 !important;
+  border-radius: 6px !important;
+  padding: 12px 18px !important;
+  margin: 1.2em 0 !important;
   color: #e0e8f0 !important;
 }
 
 .callout-title {
+  font-weight: 700;
+  margin-bottom: 0.5em;
   color: #90caf9 !important;
 }
+
+.callout[data-callout="note"] { border-left-color: #64b5f6 !important; }
+.callout[data-callout="example"] { border-left-color: #42a5f5 !important; }
+.callout[data-callout="tip"] { border-left-color: #66bb6a !important; }
+.callout[data-callout="question"] { border-left-color: #ffa726 !important; }
+.callout[data-callout="warning"] { border-left-color: #ef5350 !important; }
 
 /* --- 搜索框 --- */
 .search > .search-container > input {
@@ -169,18 +195,75 @@ pre, code {
   color: #90caf9 !important;
 }
 
+.backlinks > .backlink {
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+
 /* --- 滚动条 --- */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0d1117; }
 ::-webkit-scrollbar-thumb { background: #4a6fa5; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #64b5f6; }
 
+/* --- 页面分隔线 --- */
+.center > hr {
+  border: none;
+  border-top: 1px solid rgba(100, 181, 246, 0.1);
+  margin: 32px 0 16px;
+}
+
+/* --- 右侧 TOC --- */
+.right.sidebar {
+  font-size: 0.85rem;
+  color: #8fa4c0;
+}
+
+.right.sidebar a {
+  color: #8fa4c0 !important;
+}
+
+.right.sidebar a:hover {
+  color: #e0e8f0 !important;
+}
+
+/* --- 图片暗色适配 --- */
+article img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 181, 246, 0.1);
+}
+
+/* --- 搜索弹窗暗色 --- */
+.search-container > #search-container {
+  background: rgba(13, 17, 23, 0.95) !important;
+  border: 1px solid rgba(100, 181, 246, 0.15) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(16px);
+}
+
+.search-container .result-card {
+  background: rgba(22, 33, 62, 0.4) !important;
+  border: 1px solid rgba(100, 181, 246, 0.08) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease;
+}
+
+.search-container .result-card:hover {
+  background: rgba(100, 181, 246, 0.1) !important;
+  border-color: rgba(100, 181, 246, 0.25) !important;
+}
+
 /* --- 页脚 --- */
 footer {
   color: #4a6fa5 !important;
   text-align: center !important;
-  padding: 24px 0 !important;
-  font-size: 0.85rem !important;
+  padding: 16px 0 !important;
+  font-size: 0.8rem !important;
+  width: 100%;
+  border-top: 1px solid rgba(100, 181, 246, 0.08);
+  margin-top: 32px;
+  opacity: 0.7;
 }
 
 /* ===== 顶部导航栏 ===== */
@@ -384,19 +467,6 @@ article code:not(pre code) {
   font-size: 0.9em;
 }
 
-/* 数学公式行间距 */
-.katex-display {
-  margin: 1.5em 0;
-  padding: 12px 8px;
-  background: rgba(100, 181, 246, 0.04);
-  border-radius: 8px;
-  overflow-x: auto;
-}
-
-.katex {
-  font-size: 1.05em;
-}
-
 /* 表格 */
 article table {
   width: 100%;
@@ -413,28 +483,6 @@ article td {
   padding: 8px 12px;
   border-bottom: 1px solid rgba(100, 181, 246, 0.08);
 }
-
-/* ===== Callout 优化（Obsidian 风格） ===== */
-.callout {
-  border-left: 4px solid #64b5f6 !important;
-  background: rgba(100, 181, 246, 0.06) !important;
-  border-radius: 6px !important;
-  padding: 12px 18px !important;
-  margin: 1.2em 0 !important;
-}
-
-.callout-title {
-  font-weight: 700;
-  margin-bottom: 0.5em;
-  color: #90caf9 !important;
-}
-
-/* 不同callout类型 */
-.callout[data-callout="note"] { border-left-color: #64b5f6 !important; }
-.callout[data-callout="example"] { border-left-color: #42a5f5 !important; }
-.callout[data-callout="tip"] { border-left-color: #66bb6a !important; }
-.callout[data-callout="question"] { border-left-color: #ffa726 !important; }
-.callout[data-callout="warning"] { border-left-color: #ef5350 !important; }
 
 /* ===== 面包屑导航在笔记页顶部小一些 ===== */
 article .breadcrumb-container {

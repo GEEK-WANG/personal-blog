@@ -30,10 +30,6 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({
-      component: Component.FilterBar(),
-      condition: (page) => page.fileData.slug === "index",
-    }),
-    Component.ConditionalRender({
       component: Component.BlogIndex(),
       condition: (page) => page.fileData.slug === "index",
     }),
@@ -97,7 +93,6 @@ export const defaultListPageLayout: PageLayout = {
   beforeBody: [
     Component.IntroSection(),
     Component.SnakeGrid(),
-    Component.FilterBar(),
     Component.BlogIndex(),
   ],
   left: [
