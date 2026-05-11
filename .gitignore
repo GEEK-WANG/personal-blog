@@ -20,3 +20,8 @@ fix_math.py
 
 # Local settings
 .claude/settings.local.json
+
+# Existing web template (not part of blog)
+web/
+图像/
+docs/

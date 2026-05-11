@@ -114,14 +114,16 @@ export default (() => {
     }
     .pixel-cell {
       border-radius: 2px;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.7);
+      min-width: 3px;
+      min-height: 3px;
     }
     .pixel-obstacle {
-      background: rgba(100, 181, 246, 0.25);
+      background: rgb(8, 150, 13);
     }
     .pixel-bug {
-      background: #42a5f5;
-      box-shadow: 0 0 6px rgba(66, 165, 245, 0.6);
+      background: #c400e0;
+      box-shadow: 0 0 6px #c400e0;
     }
   `
 
