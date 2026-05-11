@@ -183,12 +183,79 @@ footer {
   font-size: 0.85rem !important;
 }
 
+/* ===== 布局比例优化 ===== */
+
+/* 三栏布局: 左导航 180px | 中央内容 flex | 右TOC 180px */
+#quartz-body {
+  display: flex;
+  gap: 0;
+}
+
+/* 左侧栏 - 文件夹导航 */
+#quartz-body > .left.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 20px 12px;
+  overflow-y: auto;
+}
+
+/* 中央内容区 - 最大空间给正文 */
+#quartz-body > .center {
+  flex: 1;
+  min-width: 0;
+  max-width: 820px;
+  padding: 20px 24px;
+}
+
+/* 右侧栏 - TOC */
+#quartz-body > .right.sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  padding: 20px 12px;
+  overflow-y: auto;
+}
+
+/* 手机端恢复默认布局 */
+@media (max-width: 1200px) {
+  #quartz-body {
+    flex-direction: column;
+  }
+  #quartz-body > .left.sidebar,
+  #quartz-body > .right.sidebar {
+    width: 100%;
+    padding: 12px;
+  }
+  #quartz-body > .center {
+    max-width: 100%;
+  }
+}
+
+/* 探索器（文件夹树）样式 */
+.explorer {
+  font-size: 0.9rem;
+}
+.explorer .folder-outer {
+  padding-left: 8px;
+}
+.explorer .folder-icon {
+  color: #64b5f6;
+}
+.explorer a {
+  padding: 3px 6px;
+  border-radius: 4px;
+  display: block;
+  transition: background 0.15s;
+}
+.explorer a:hover {
+  background: rgba(100, 181, 246, 0.08);
+}
+
 /* ===== 正文排版优化 ===== */
 
 /* 内容区域最大宽度，更好阅读 */
 .page > .center > .page-header {
-  max-width: 780px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
 }
 
 /* 段落间距 */

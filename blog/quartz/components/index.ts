@@ -26,6 +26,7 @@ import ConditionalRender from "./ConditionalRender"
 import SnakeGrid from "./SnakeGrid"
 import FilterBar from "./FilterBar"
 import BlogIndex from "./BlogIndex"
+import IntroSection from "./IntroSection"
 
 export {
   ArticleTitle,
@@ -56,4 +57,5 @@ export {
   SnakeGrid,
   FilterBar,
   BlogIndex,
+  IntroSection,
 }

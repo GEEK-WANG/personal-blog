@@ -8,8 +8,7 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/GEEK-WANG/personal-blog",
     },
   }),
 }
@@ -17,6 +16,28 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
+    // Homepage: show intro, snake, filter, blog cards on index page only
+    Component.ConditionalRender({
+      component: Component.IntroSection(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.Search(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.SnakeGrid(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.FilterBar(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.BlogIndex(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    // Note pages: breadcrumbs (not on index)
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
@@ -24,55 +45,64 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-    Component.Backlinks(),
-    Component.Graph({
-      localGraph: {
-        drag: true,
-        zoom: true,
-        depth: 2,
-        scale: 1.1,
-        repelForce: 0.5,
-        centerForce: 0.3,
-        linkDistance: 30,
-        fontSize: 0.6,
-        opacityScale: 1,
-        removeTags: [],
-        showTags: true,
-      },
-      globalGraph: {
-        drag: true,
-        zoom: true,
-        depth: -1,
-        scale: 0.9,
-        repelForce: 0.5,
-        centerForce: 0.3,
-        linkDistance: 30,
-        fontSize: 0.6,
-        opacityScale: 1,
-        removeTags: [],
-        showTags: true,
-      },
+    // Backlinks and graph only on note pages (not index)
+    Component.ConditionalRender({
+      component: Component.Backlinks(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.Graph({
+        localGraph: {
+          drag: true,
+          zoom: true,
+          depth: 2,
+          scale: 1.1,
+          repelForce: 0.5,
+          centerForce: 0.3,
+          linkDistance: 30,
+          fontSize: 0.6,
+          opacityScale: 1,
+          removeTags: [],
+          showTags: true,
+        },
+        globalGraph: {
+          drag: true,
+          zoom: true,
+          depth: -1,
+          scale: 0.9,
+          repelForce: 0.5,
+          centerForce: 0.3,
+          linkDistance: 30,
+          fontSize: 0.6,
+          opacityScale: 1,
+          removeTags: [],
+          showTags: true,
+        },
+      }),
+      condition: (page) => page.fileData.slug !== "index",
     }),
   ],
   left: [
+    Component.MobileOnly(Component.Explorer()),
+    Component.DesktopOnly(Component.Explorer()),
     Component.PageTitle(),
-    Component.ContentMeta(),
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.DesktopOnly(Component.Graph()),
-    Component.Backlinks(),
   ],
 }
 
-// components for pages that display lists of pages (blog homepage with snake animation, filter, and card index)
+// components for pages that display lists of pages (blog homepage)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [
+    Component.IntroSection(),
     Component.Search(),
     Component.SnakeGrid(),
     Component.FilterBar(),
     Component.BlogIndex(),
   ],
-  left: [],
+  left: [
+    Component.DesktopOnly(Component.Explorer()),
+  ],
   right: [],
 }

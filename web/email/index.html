@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件发送</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../images/icon.png">
+</head>
+
+<body>
+    <div class="page-bg">
+        <img src="../images/back.png" alt="背景" id="bgImage">
+    </div>
+
+    <!-- 移动按钮 -->
+    <div class="mobile-btn" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- 容器 -->
+    <div class="container">
+        <!-- 侧边栏 -->
+        <div class="sidebar" id="sidebar">
+            <!-- 头像 -->
+            <div class="avatar">
+                <img src="../images/icon.png" alt="头像">
+            </div>
+
+            <!-- 信息卡片 -->
+            <div class="card">
+                <div class="info-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>中国 · 湖北</span>
+                </div>
+                <div class="info-row">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>湖北孝感美JA职院</span>
+                </div>
+                <div class="tag-group">
+                    <span class="tag">网瘾</span>
+                    <span class="tag">XXS</span>
+                    <span class="tag">大一</span>
+                    <span class="tag">MOBA</span>
+                    <span class="tag">GAME</span>
+                    <span class="tag">抖音</span>
+                    <span class="tag">前端</span>
+                    <span class="tag">算法</span>
+                    <span class="tag">html</span>
+                    <span class="tag">C/C++</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+            </div>
+
+            <!-- 时间轴 -->
+            <div class="card">
+                <div class="timeline">
+                    <div class="item active">
+                        <div class="dot"></div>
+                        <div class="con">
+                            <p>2026-04</p>
+                            <small>学习进行中...</small>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="dot"></div>
+                        <div class="con">
+                            <p>2023-08</p>
+                            <small>努力学习</small>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="dot"></div>
+                        <div class="con">
+                            <p>2022-02</p>
+                            <small>走火入魔</small>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="dot"></div>
+                        <div class="con">
+                            <p>2020-01</p>
+                            <small>初次见面</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主内容 -->
+        <div class="main">
+            <div class="main-inner">
+                <!-- 个人信息 -->
+                <div class="profile">
+                    <h1>你好，我是 <span class="name">Mo Yan</span></h1>
+                    <div class="bio">
+                        <p><i class="fas fa-code"></i> 前端开发者</p>
+                        <p><i class="fas fa-gamepad"></i> 游戏爱好者</p>
+                        <p><i class="fas fa-music"></i> 音乐发烧友</p>
+                    </div>
+                </div>
+
+                <!-- 用户留言区域 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-comment"></i> 用户留言
+                    </div>
+                    
+                    <div class="card email-card">
+                        <form id="messageForm" onsubmit="sendMessage(event)">
+                            <div class="form-group">
+                                <label for="senderName">您的姓名</label>
+                                <input type="text" id="senderName" placeholder="请输入您的姓名" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senderEmail">邮箱联系方式</label>
+                                <input type="email" id="senderEmail" placeholder="请输入您的邮箱" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageSubject">留言主题</label>
+                                <input type="text" id="messageSubject" placeholder="请输入留言主题" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageContent">留言内容</label>
+                                <textarea id="messageContent" placeholder="请输入留言内容" required style="min-height: 200px;"></textarea>
+                            </div>
+                            <button type="submit" class="btn" id="sendBtn">提交留言</button>
+                            <div id="messageStatus" class="status"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 页脚 -->
+                <footer>
+                    <p>&copy; 2026 个人主页. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
