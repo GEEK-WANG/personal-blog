@@ -81,6 +81,20 @@ document.addEventListener('click', (e) => {
     if (!side.contains(e.target) && !btn.contains(e.target)) side.classList.remove('show');
 });
 
+// 文件夹展开/折叠
+function toggleFolder(folderId) {
+    const folder = document.getElementById(folderId);
+    folder.classList.toggle('open');
+}
+
+// 导航链接点击切换 active 状态
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.getElementById('progressBar').style.width = '100%';
