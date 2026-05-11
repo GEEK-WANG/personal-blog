@@ -1,9 +1,33 @@
 /* ========== 学术蓝灰暗色主题 ========== */
 
+/* 强制暗色模式——用更高优先级覆盖 Quartz 默认变量 */
+html:root,
+html:root[saved-theme="light"],
+html:root[saved-theme="dark"] {
+  --light: #1a1a2e;
+  --lightgray: #16213e;
+  --gray: #4a6fa5;
+  --darkgray: #b0c7e0;
+  --dark: #e0e8f0;
+  --secondary: #64b5f6;
+  --tertiary: #90caf9;
+  --highlight: rgba(100, 181, 246, 0.12);
+  --textHighlight: #64b5f644;
+}
+
 /* --- 基础文字颜色 --- */
 body {
-  background-color: #0d1117;
-  color: #e0e8f0;
+  background-color: #0d1117 !important;
+  color: #e0e8f0 !important;
+}
+
+#quartz-root,
+#quartz-body,
+.page,
+.center,
+.page-header {
+  color: #e0e8f0 !important;
+  background-color: #0d1117 !important;
 }
 
 h1, h2, h3, h4, h5, h6,
