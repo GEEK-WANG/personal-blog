@@ -27,6 +27,7 @@ import SnakeGrid from "./SnakeGrid"
 import FilterBar from "./FilterBar"
 import BlogIndex from "./BlogIndex"
 import IntroSection from "./IntroSection"
+import TopNav from "./TopNav"
 
 export {
   ArticleTitle,
@@ -58,4 +59,5 @@ export {
   FilterBar,
   BlogIndex,
   IntroSection,
+  TopNav,
 }

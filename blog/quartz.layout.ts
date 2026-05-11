@@ -4,7 +4,11 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [
+    Component.TopNav(),
+    Component.Search(),
+    Component.Darkmode(),
+  ],
   afterBody: [],
   footer: Component.Footer({
     links: {
@@ -19,10 +23,6 @@ export const defaultContentPageLayout: PageLayout = {
     // Homepage: show intro, snake, filter, blog cards on index page only
     Component.ConditionalRender({
       component: Component.IntroSection(),
-      condition: (page) => page.fileData.slug === "index",
-    }),
-    Component.ConditionalRender({
-      component: Component.Search(),
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({
@@ -96,7 +96,6 @@ export const defaultContentPageLayout: PageLayout = {
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [
     Component.IntroSection(),
-    Component.Search(),
     Component.SnakeGrid(),
     Component.FilterBar(),
     Component.BlogIndex(),

@@ -183,19 +183,81 @@ footer {
   font-size: 0.85rem !important;
 }
 
+/* ===== 顶部导航栏 ===== */
+#quartz-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 24px;
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(100, 181, 246, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+#quartz-header .search {
+  margin: 0;
+  flex-shrink: 0;
+}
+#quartz-header .search-button {
+  background: rgba(22, 33, 62, 0.6);
+  border: 1px solid rgba(100, 181, 246, 0.2);
+  border-radius: 8px;
+  padding: 6px 14px;
+  color: #b0c7e0;
+  transition: all 0.2s ease;
+}
+#quartz-header .search-button:hover {
+  background: rgba(100, 181, 246, 0.12);
+  border-color: rgba(100, 181, 246, 0.4);
+}
+#quartz-header .search-button svg {
+  width: 16px;
+  height: 16px;
+}
+#quartz-header .search-button p {
+  font-size: 0.85rem;
+  margin: 0;
+}
+#quartz-header .darkmode {
+  margin: 0;
+  flex-shrink: 0;
+  background: rgba(22, 33, 62, 0.6);
+  border: 1px solid rgba(100, 181, 246, 0.2);
+  border-radius: 8px;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+#quartz-header .darkmode:hover {
+  background: rgba(100, 181, 246, 0.12);
+  border-color: rgba(100, 181, 246, 0.4);
+}
+#quartz-header .darkmode svg {
+  width: 18px;
+  height: 18px;
+}
+
 /* ===== 布局比例优化 ===== */
 
-/* 三栏布局: 左导航 180px | 中央内容 flex | 右TOC 180px */
+/* 三栏布局: 左导航 220px | 中央内容 flex | 右TOC 200px */
 #quartz-body {
   display: flex;
   gap: 0;
+  justify-content: center;
 }
 
 /* 左侧栏 - 文件夹导航 */
 #quartz-body > .left.sidebar {
-  width: 200px;
+  width: 220px;
   flex-shrink: 0;
-  padding: 20px 12px;
+  padding: 24px 16px;
   overflow-y: auto;
 }
 
@@ -203,15 +265,15 @@ footer {
 #quartz-body > .center {
   flex: 1;
   min-width: 0;
-  max-width: 820px;
-  padding: 20px 24px;
+  max-width: 900px;
+  padding: 24px 32px;
 }
 
 /* 右侧栏 - TOC */
 #quartz-body > .right.sidebar {
-  width: 180px;
+  width: 200px;
   flex-shrink: 0;
-  padding: 20px 12px;
+  padding: 24px 16px;
   overflow-y: auto;
 }
 
@@ -227,6 +289,7 @@ footer {
   }
   #quartz-body > .center {
     max-width: 100%;
+    padding: 16px;
   }
 }
 

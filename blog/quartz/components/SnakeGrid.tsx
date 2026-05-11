@@ -1,7 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
-const COLS = 50
-const ROWS = 8
+const COLS = 40
+const ROWS = 4
 
 const snakeScript = `
 (function() {
@@ -20,7 +20,7 @@ const snakeScript = `
   }
 
   const obstacles = new Set();
-  while (obstacles.size < 24) {
+  while (obstacles.size < 12) {
     const x = Math.floor(Math.random() * ${COLS});
     const y = Math.floor(Math.random() * ${ROWS});
     const key = x + "," + y;
@@ -33,7 +33,7 @@ const snakeScript = `
   const cx = Math.floor(${COLS} / 2);
   const cy = Math.floor(${ROWS} / 2);
   const snake = [];
-  for (let i = 0; i < 5; i++) snake.push({ x: cx - i, y: cy });
+  for (let i = 0; i < 4; i++) snake.push({ x: cx - i, y: cy });
 
   function draw() {
     cells.forEach(c => c.classList.remove("pixel-bug"));
@@ -58,7 +58,7 @@ const snakeScript = `
     snake.unshift({ x: head.x + m.x, y: head.y + m.y });
     snake.pop();
     draw();
-  }, 60);
+  }, 80);
 })();
 `
 
@@ -66,7 +66,6 @@ export default (() => {
   const SnakeGrid: QuartzComponent = (_props: QuartzComponentProps) => {
     return (
       <div class="snake-grid-outer">
-        <div class="snake-grid-label">🐍 Notes Activity</div>
         <div class="snake-grid-inner" />
       </div>
     )
@@ -75,18 +74,12 @@ export default (() => {
   SnakeGrid.css = `
     .snake-grid-outer {
       width: 100%;
-      margin: 20px 0;
-      padding: 16px;
-      background: rgba(22, 33, 62, 0.4);
+      margin: 12px 0;
+      padding: 10px 12px;
+      background: rgba(22, 33, 62, 0.3);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(100, 181, 246, 0.1);
-      border-radius: 12px;
-    }
-    .snake-grid-label {
-      font-size: 0.85rem;
-      color: #b0c7e0;
-      text-align: center;
-      margin-bottom: 10px;
+      border: 1px solid rgba(100, 181, 246, 0.08);
+      border-radius: 8px;
     }
     .snake-grid-inner {
       display: grid;
@@ -95,22 +88,22 @@ export default (() => {
       gap: 2px;
       width: 100%;
       aspect-ratio: ${COLS} / ${ROWS};
-      border-radius: 6px;
+      border-radius: 4px;
       overflow: hidden;
-      min-height: 40px;
+      min-height: 24px;
     }
     .pixel-cell {
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.7);
+      border-radius: 1px;
+      background: rgba(255, 255, 255, 0.5);
       min-width: 2px;
       min-height: 2px;
     }
     .pixel-obstacle {
-      background: rgb(8, 150, 13);
+      background: rgba(8, 150, 13, 0.6);
     }
     .pixel-bug {
       background: #ffffff;
-      box-shadow: 0 0 8px #ffffff;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
     }
   `
 
