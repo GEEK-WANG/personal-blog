@@ -23,6 +23,9 @@ import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
+import SnakeGrid from "./SnakeGrid"
+import FilterBar from "./FilterBar"
+import BlogIndex from "./BlogIndex"
 
 export {
   ArticleTitle,
@@ -50,4 +53,7 @@ export {
   Comments,
   Flex,
   ConditionalRender,
+  SnakeGrid,
+  FilterBar,
+  BlogIndex,
 }
