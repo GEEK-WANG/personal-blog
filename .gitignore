@@ -5,9 +5,8 @@ blog/.quartz-cache/
 blog/content/
 
 # Obsidian
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/hotkeys.json
+.obsidian/
+**/.obsidian/
 
 # System
 .DS_Store
