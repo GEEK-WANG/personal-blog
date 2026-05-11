@@ -1,10 +1,43 @@
 /* ========== 学术蓝灰暗色主题 ========== */
 
+/* --- 基础文字颜色 --- */
 body {
   background-color: #0d1117;
+  color: #e0e8f0;
 }
 
-/* 毛玻璃卡片效果 */
+h1, h2, h3, h4, h5, h6,
+.page-title, .article-title,
+p, li, span, div, th, td, blockquote,
+.content-meta, .tag-list, .breadcrumbs {
+  color: #e0e8f0;
+}
+
+h1 { color: #ffffff; }
+h2 { color: #d0ddf0; }
+h3 { color: #c0d0e8; }
+
+/* --- 链接用学术蓝 --- */
+a, a:visited {
+  color: #64b5f6 !important;
+  text-decoration: none;
+}
+a:hover {
+  color: #90caf9 !important;
+}
+
+/* --- 页面标题渐变 --- */
+.page-title, .article-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #64b5f6, #90caf9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* --- 毛玻璃卡片效果 --- */
 article.popover-hint,
 .page > article,
 .backlinks > .backlink,
@@ -20,27 +53,20 @@ article.popover-hint,
   transition: all 0.3s ease !important;
 }
 
-/* 链接用学术蓝 */
-a,
-a:visited {
-  color: #64b5f6 !important;
-  text-decoration: none;
-}
-a:hover {
-  color: #90caf9 !important;
+/* --- 笔记正文区域 --- */
+article,
+.page > article,
+.page > article .popover-hint {
+  color: #e0e8f0 !important;
+  line-height: 1.8;
 }
 
-/* 页面标题渐变 */
-.page-title {
-  font-size: 2rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #64b5f6, #90caf9);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+article p, article li, article td, article th,
+article blockquote, article span {
+  color: #e0e8f0 !important;
 }
 
-/* LaTeX 公式区域 */
+/* --- LaTeX 公式区域 --- */
 .katex-display {
   background: rgba(100, 181, 246, 0.04);
   border-radius: 8px;
@@ -48,16 +74,25 @@ a:hover {
   overflow-x: auto;
 }
 
-/* Callout 提示框 */
+.katex {
+  color: #e0e8f0;
+}
+
+/* --- Callout 提示框 --- */
 .callout {
   border-left: 3px solid #64b5f6 !important;
   background: rgba(100, 181, 246, 0.06) !important;
   border-radius: 0 8px 8px 0 !important;
   padding: 12px 16px !important;
   margin: 16px 0 !important;
+  color: #e0e8f0 !important;
 }
 
-/* 搜索框 */
+.callout-title {
+  color: #90caf9 !important;
+}
+
+/* --- 搜索框 --- */
 .search > .search-container > input {
   background: rgba(22, 33, 62, 0.6) !important;
   border: 1px solid rgba(100, 181, 246, 0.2) !important;
@@ -65,20 +100,58 @@ a:hover {
   color: #e0e8f0 !important;
 }
 
-/* 代码块 */
-pre {
+/* --- 代码块 --- */
+pre, code {
   background: rgba(22, 33, 62, 0.8) !important;
   border: 1px solid rgba(100, 181, 246, 0.15) !important;
   border-radius: 8px !important;
+  color: #d0ddf0 !important;
 }
 
-/* 滚动条 */
+/* --- 知识图谱 --- */
+.graph {
+  background: rgba(22, 33, 62, 0.3);
+  border: 1px solid rgba(100, 181, 246, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+.graph svg text {
+  fill: #b0c7e0 !important;
+}
+
+.graph svg line, .graph svg path {
+  stroke: rgba(100, 181, 246, 0.3) !important;
+}
+
+/* --- 导航面包屑 --- */
+.breadcrumbs a, .breadcrumbs span {
+  color: #8fa4c0 !important;
+}
+
+/* --- 标签 --- */
+.tag-list li, .tag-list span {
+  color: #b0c7e0 !important;
+}
+
+/* --- 内容元信息 --- */
+.content-meta {
+  color: #4a6fa5 !important;
+}
+
+/* --- 反向链接 --- */
+.backlinks h3 {
+  color: #90caf9 !important;
+}
+
+/* --- 滚动条 --- */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0d1117; }
 ::-webkit-scrollbar-thumb { background: #4a6fa5; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #64b5f6; }
 
-/* 页脚 */
+/* --- 页脚 --- */
 footer {
   color: #4a6fa5 !important;
   text-align: center !important;

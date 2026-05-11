@@ -24,12 +24,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-  ],
-  left: [
-    Component.PageTitle(),
-    Component.ContentMeta(),
-  ],
-  right: [
+    Component.Content(),
+    Component.Backlinks(),
     Component.Graph({
       localGraph: {
         drag: true,
@@ -58,7 +54,14 @@ export const defaultContentPageLayout: PageLayout = {
         showTags: true,
       },
     }),
+  ],
+  left: [
+    Component.PageTitle(),
+    Component.ContentMeta(),
+  ],
+  right: [
     Component.DesktopOnly(Component.TableOfContents()),
+    Component.DesktopOnly(Component.Graph()),
     Component.Backlinks(),
   ],
 }
