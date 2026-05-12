@@ -348,13 +348,13 @@ footer {
 #quartz-body > .center {
   flex: 1;
   min-width: 0;
-  max-width: 900px;
+  max-width: 1100px;
   padding: 24px 32px;
 }
 
 /* 右侧栏 - TOC */
 #quartz-body > .right.sidebar {
-  width: 200px;
+  width: 300px;
   flex-shrink: 0;
   padding: 24px 16px;
   overflow-y: auto;
@@ -373,6 +373,10 @@ footer {
   #quartz-body > .center {
     max-width: 100%;
     padding: 16px;
+  }
+  /* hide graph on small screens to save space */
+  #quartz-body > .right.sidebar .graph {
+    display: none;
   }
 }
 

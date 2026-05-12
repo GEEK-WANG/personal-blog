@@ -46,37 +46,7 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Backlinks(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ConditionalRender({
-      component: Component.Graph({
-        localGraph: {
-          drag: true,
-          zoom: true,
-          depth: 2,
-          scale: 1.1,
-          repelForce: 0.5,
-          centerForce: 0.3,
-          linkDistance: 30,
-          fontSize: 0.6,
-          opacityScale: 1,
-          removeTags: [],
-          showTags: true,
-        },
-        globalGraph: {
-          drag: true,
-          zoom: true,
-          depth: -1,
-          scale: 0.9,
-          repelForce: 0.5,
-          centerForce: 0.3,
-          linkDistance: 30,
-          fontSize: 0.6,
-          opacityScale: 1,
-          removeTags: [],
-          showTags: true,
-        },
-      }),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
+
   ],
   left: [
     Component.MobileOnly(Component.Explorer()),
@@ -85,6 +55,34 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
+    Component.DesktopOnly(Component.Graph({
+      localGraph: {
+        drag: true,
+        zoom: true,
+        depth: 2,
+        scale: 1.1,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 30,
+        fontSize: 0.6,
+        opacityScale: 1,
+        removeTags: [],
+        showTags: true,
+      },
+      globalGraph: {
+        drag: true,
+        zoom: true,
+        depth: -1,
+        scale: 0.9,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 30,
+        fontSize: 0.6,
+        opacityScale: 1,
+        removeTags: [],
+        showTags: true,
+      },
+    })),
   ],
 }
 

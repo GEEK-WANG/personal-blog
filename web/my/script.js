@@ -15,6 +15,12 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// 文件夹展开/折叠
+function toggleFolder(folderId) {
+    const folder = document.getElementById(folderId);
+    folder.classList.toggle('open');
+}
+
 // 平滑滚动
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

@@ -24,70 +24,111 @@
     <div class="container">
         <!-- 侧边栏 -->
         <div class="sidebar" id="sidebar">
-            <!-- 头像 -->
-            <div class="avatar">
-                <img src="../images/icon.png" alt="头像">
+            <!-- 侧边栏头部 -->
+            <div class="sidebar-header">
+                <div class="sidebar-avatar">
+                    <img src="../images/icon.png" alt="avatar">
+                </div>
+                <h1 class="sidebar-title">Mo Yan</h1>
+                <p class="sidebar-subtitle">中国 · 湖北 | 湖北孝感美JA职院</p>
             </div>
 
-            <!-- 信息卡片 -->
-            <div class="card">
-                <div class="info-row">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>中国 · 湖北</span>
-                </div>
-                <div class="info-row">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>湖北孝感美JA职院</span>
-                </div>
-                <div class="tag-group">
-                    <span class="tag">网瘾</span>
-                    <span class="tag">XXS</span>
-                    <span class="tag">大一</span>
-                    <span class="tag">MOBA</span>
-                    <span class="tag">GAME</span>
-                    <span class="tag">抖音</span>
-                    <span class="tag">前端</span>
-                    <span class="tag">算法</span>
-                    <span class="tag">html</span>
-                    <span class="tag">C/C++</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-            </div>
+            <!-- 快速导航 -->
+            <nav class="nav-section">
+                <h3 class="nav-section-title">快速导航</h3>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">关于</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">网站历史</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../project/index.html" class="nav-link" target="_blank">项目</a>
+                    </li>
+                </ul>
+            </nav>
 
-            <!-- 时间轴 -->
-            <div class="card">
-                <div class="timeline">
-                    <div class="item active">
-                        <div class="dot"></div>
-                        <div class="con">
-                            <p>2026-04</p>
-                            <small>学习进行中...</small>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="dot"></div>
-                        <div class="con">
-                            <p>2023-08</p>
-                            <small>努力学习</small>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="dot"></div>
-                        <div class="con">
-                            <p>2022-02</p>
-                            <small>走火入魔</small>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="dot"></div>
-                        <div class="con">
-                            <p>2020-01</p>
-                            <small>初次见面</small>
-                        </div>
-                    </div>
+            <!-- 我的页面 -->
+            <nav class="nav-section">
+                <h3 class="nav-section-title">我的页面</h3>
+                <div class="folder-container" onclick="toggleFolder('folder-ties')">
+                    <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 20h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12z"/>
+                        <path d="M4 10l4-4 4 4"/>
+                    </svg>
+                    <span class="folder-title">TIES</span>
                 </div>
-            </div>
+                <div id="folder-ties" class="submenu open">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="./diary.html" class="nav-link">日记 📖</a></li>
+                        <li class="nav-item"><a href="./article.html" class="nav-link">文章 ✍️</a></li>
+                        <li class="nav-item"><a href="./life.html" class="nav-link">生活 🍃</a></li>
+                        <li class="nav-item"><a href="./record.html" class="nav-link active">记录 📝</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 外部链接 -->
+            <nav class="nav-section">
+                <h3 class="nav-section-title">外部链接</h3>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://github.com/moyanyyds" class="nav-link" target="_blank">GitHub</a></li>
+                    <li class="nav-item"><a href="../email/index.html" class="nav-link" target="_blank">E-mail</a></li>
+                    <li class="nav-item"><a href="https://t.me/MY0507" class="nav-link" target="_blank">Telegram</a></li>
+                    <li class="nav-item"><a href="https://qm.qq.com/cgi-bin/qm/qr?k=0dAZh4CkCxqk3zHGnYSop4VH6HRyQ7Av" class="nav-link" target="_blank">QQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- 标签 -->
+            <nav class="nav-section">
+                <h3 class="nav-section-title">标签</h3>
+                <div class="sidebar-tags">
+                    <span class="sidebar-tag">前端</span>
+                    <span class="sidebar-tag">算法</span>
+                    <span class="sidebar-tag">html</span>
+                    <span class="sidebar-tag">C/C++</span>
+                    <span class="sidebar-tag">Java</span>
+                    <span class="sidebar-tag">JavaScript</span>
+                    <span class="sidebar-tag">Python</span>
+                    <span class="sidebar-tag">Linux</span>
+                    <span class="sidebar-tag">Git</span>
+                </div>
+            </nav>
+
+            <!-- 时间线 -->
+            <nav class="nav-section">
+                <h3 class="nav-section-title">时间线</h3>
+                <ul class="nav-list timeline-list">
+                    <li class="nav-item">
+                        <div class="timeline-link">
+                            <span class="timeline-year">2026-04</span>
+                            <span class="timeline-desc">学习进行中...</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="timeline-link">
+                            <span class="timeline-year">2023-08</span>
+                            <span class="timeline-desc">努力学习</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="timeline-link">
+                            <span class="timeline-year">2022-02</span>
+                            <span class="timeline-desc">走火入魔</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="timeline-link">
+                            <span class="timeline-year">2020-01</span>
+                            <span class="timeline-desc">初次见面</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
         <!-- 主内容 -->

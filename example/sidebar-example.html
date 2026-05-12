@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>侧边栏示例 - Sidebar Example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #0d1117 0%, #1a1a2e 100%);
+      min-height: 100vh;
+      color: #e0e8f0;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* 侧边栏样式 */
+    .sidebar {
+      width: 280px;
+      background: rgba(22, 33, 62, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-right: 1px solid rgba(100, 181, 246, 0.1);
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      background: rgba(100, 181, 246, 0.05);
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background: rgba(100, 181, 246, 0.2);
+      border-radius: 3px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: rgba(100, 181, 246, 0.4);
+    }
+
+    /* 侧边栏头部 */
+    .sidebar-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid rgba(100, 181, 246, 0.1);
+      margin-bottom: 16px;
+    }
+
+    .sidebar-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #64b5f6, #90caf9);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .sidebar-subtitle {
+      font-size: 0.8rem;
+      color: #6b8ba4;
+      margin-top: 4px;
+    }
+
+    /* 导航菜单 */
+    .nav-section {
+      padding: 0 12px;
+      margin-bottom: 24px;
+    }
+
+    .nav-section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #90caf9;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-item {
+      margin-bottom: 2px;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 8px 12px;
+      color: #8fa4c0;
+      text-decoration: none;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .nav-link::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      background: rgba(100, 181, 246, 0.5);
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.15s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(100, 181, 246, 0.1);
+      color: #e0e8f0;
+      padding-left: 16px;
+    }
+
+    .nav-link:hover::before {
+      opacity: 1;
+    }
+
+    .nav-link.active {
+      background: rgba(100, 181, 246, 0.15);
+      color: #90caf9;
+      box-shadow: inset 0 0 0 1px rgba(100, 181, 246, 0.2);
+    }
+
+    .nav-link.active::before {
+      opacity: 1;
+      background: #64b5f6;
+      box-shadow: 0 0 8px rgba(100, 181, 246, 0.5);
+    }
+
+    /* 文件夹导航 */
+    .folder-container {
+      padding: 6px 12px;
+      margin: 2px 6px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .folder-container:hover {
+      background: rgba(100, 181, 246, 0.08);
+    }
+
+    .folder-icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      color: #64b5f6;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .folder-container:hover .folder-icon {
+      color: #90caf9;
+      transform: scale(1.1);
+    }
+
+    .folder-title {
+      font-size: 0.875rem;
+      color: #b0c7e0;
+      font-weight: 500;
+    }
+
+    .folder-container:hover .folder-title {
+      color: #e0e8f0;
+    }
+
+    /* 子菜单 */
+    .submenu {
+      padding-left: 24px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+
+    .submenu.open {
+      max-height: 500px;
+    }
+
+    .submenu .nav-link {
+      font-size: 0.82rem;
+      padding-left: 24px;
+    }
+
+    .submenu .nav-link::before {
+      left: 24px;
+      width: 3px;
+      height: 3px;
+    }
+
+    /* 主内容区 */
+    .main-content {
+      flex: 1;
+      padding: 32px;
+      max-width: 900px;
+    }
+
+    .content-header {
+      margin-bottom: 32px;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .content-meta {
+      color: #6b8ba4;
+      font-size: 0.9rem;
+    }
+
+    .article-section {
+      margin-bottom: 24px;
+    }
+
+    .article-section h2 {
+      font-size: 1.4rem;
+      color: #d0ddf0;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(100, 181, 246, 0.15);
+    }
+
+    .article-section p {
+      color: #e0e8f0;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .code-block {
+      background: rgba(22, 33, 62, 0.6);
+      border: 1px solid rgba(100, 181, 246, 0.15);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      color: #90caf9;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid rgba(100, 181, 246, 0.1);
+      }
+
+      .container {
+        flex-direction: column;
+      }
+
+      .main-content {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <!-- 侧边栏头部 -->
+      <div class="sidebar-header">
+        <h1 class="sidebar-title">📐 MathNotes</h1>
+        <p class="sidebar-subtitle">数学学习笔记</p>
+      </div>
+
+      <!-- 快速导航 -->
+      <nav class="nav-section">
+        <h3 class="nav-section-title">快速导航</h3>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">首页</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">关于</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">标签</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 课程目录 -->
+      <nav class="nav-section">
+        <h3 class="nav-section-title">课程目录</h3>
+        
+        <!-- 零基础模块 -->
+        <div class="folder-container" onclick="toggleFolder('folder1')">
+          <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 20h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12z"/>
+            <path d="M4 10l4-4 4 4"/>
+          </svg>
+          <span class="folder-title">零基础</span>
+        </div>
+        <div id="folder1" class="submenu open">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">三角函数</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">双曲函数</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">重要不等式</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">数学归纳法</a></li>
+          </ul>
+        </div>
+
+        <!-- 极限模块 -->
+        <div class="folder-container" onclick="toggleFolder('folder2')">
+          <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 20h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12z"/>
+            <path d="M4 10l4-4 4 4"/>
+          </svg>
+          <span class="folder-title">极限</span>
+        </div>
+        <div id="folder2" class="submenu">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">极限定义</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">无穷比无穷型</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">泰勒公式</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">重要极限</a></li>
+          </ul>
+        </div>
+
+        <!-- 积分模块 -->
+        <div class="folder-container" onclick="toggleFolder('folder3')">
+          <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 20h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12z"/>
+            <path d="M4 10l4-4 4 4"/>
+          </svg>
+          <span class="folder-title">积分</span>
+        </div>
+        <div id="folder3" class="submenu">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link">基本积分公式</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">常用积分方法</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">定积分</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">华里士公式</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- 最近更新 -->
+      <nav class="nav-section">
+        <h3 class="nav-section-title">最近更新</h3>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">泰勒公式详解</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">洛必达法则</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">三角函数积分</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <header class="content-header">
+        <h1 class="content-title">HTML 基础语法</h1>
+        <p class="content-meta">学习 Web 开发 / 核心学习模块 / 使用 HTML 构建 Web</p>
+      </header>
+
+      <article>
+        <section class="article-section">
+          <h2>什么是 HTML？</h2>
+          <p>HTML（HyperText Markup Language，超文本标记语言）是一种标记语言，它告诉 Web 浏览器如何组织你访问的网页。HTML 由一系列的元素组成，你使用这些元素来包围、包装或标记内容的不同部分，使其以某种方式显示或运作。</p>
+        </section>
+
+        <section class="article-section">
+          <h2>剖析一个 HTML 元素</h2>
+          <p>一个 HTML 元素通常由以下部分组成：</p>
+          <div class="code-block">
+            <code>&lt;p class="example"&gt;这是一个段落。&lt;/p&gt;</code>
+          </div>
+          <p><strong>开始标签</strong>：由元素名称和可选属性组成，用尖括号包裹。</p>
+          <p><strong>内容</strong>：元素包含的文本或其他元素。</p>
+          <p><strong>结束标签</strong>：与开始标签类似，但在元素名称前有一个斜杠。</p>
+        </section>
+
+        <section class="article-section">
+          <h2>属性</h2>
+          <p>属性提供了关于元素的额外信息，不会出现在内容中。属性通常包含名称和值：</p>
+          <div class="code-block">
+            <code>&lt;img src="image.jpg" alt="描述文字" width="300"&gt;</code>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    // 文件夹展开/折叠功能
+    function toggleFolder(folderId) {
+      const folder = document.getElementById(folderId);
+      folder.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
