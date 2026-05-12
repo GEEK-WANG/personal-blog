@@ -456,8 +456,8 @@ footer {
   cursor: pointer;
 }
 .explorer .folder-container:hover {
-  background: rgba(100, 181, 246, 0.1);
-  transform: translateX(3px);
+  background: rgba(100, 181, 246, 0.06);
+  /* keep stable, avoid horizontal shift for better web UX */
 }
 
 /* 文件夹图标 */
@@ -512,10 +512,9 @@ footer {
   transition: all 0.18s ease;
 }
 .explorer li > a:hover {
-  background: rgba(100, 181, 246, 0.1);
+  background: rgba(100, 181, 246, 0.06);
   color: #e0e8f0 !important;
-  padding-left: 38px;
-  transform: translateX(3px);
+  padding-left: 34px;
 }
 .explorer li > a:hover::before {
   background: #64b5f6;
