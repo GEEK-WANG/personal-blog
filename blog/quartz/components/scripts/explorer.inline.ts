@@ -154,6 +154,35 @@ function createFolderNode(
   return li
 }
 
+function filterExplorer(containerUl: HTMLUListElement, query: string) {
+  if (!query) {
+    const allLis = containerUl.querySelectorAll('li')
+    allLis.forEach((li) => ((li as HTMLElement).style.display = ''))
+    return
+  }
+  const q = query.toLowerCase()
+  function matches(li: HTMLElement): boolean {
+    const titleEl = (li.querySelector('a, .folder-title, .folder-button span') as HTMLElement | null)
+    if (titleEl && titleEl.textContent && titleEl.textContent.toLowerCase().includes(q)) return true
+    const childUl = li.querySelector('.folder-outer > ul') as HTMLUListElement | null
+    if (childUl) {
+      const childLis = childUl.querySelectorAll('> li')
+      for (const child of childLis) if (matches(child as HTMLElement)) return true
+    }
+    return false
+  }
+  const lis = containerUl.querySelectorAll('> li')
+  lis.forEach((li) => {
+    const shouldShow = matches(li as HTMLElement)
+    ;(li as HTMLElement).style.display = shouldShow ? '' : 'none'
+    const folderOuter = li.querySelector('.folder-outer') as HTMLElement | null
+    if (folderOuter) {
+      if (shouldShow) folderOuter.classList.add('open')
+      else folderOuter.classList.remove('open')
+    }
+  })
+}
+
 async function setupExplorer(currentSlug: FullSlug) {
   const allExplorers = document.querySelectorAll("div.explorer") as NodeListOf<HTMLElement>
 
@@ -219,6 +248,17 @@ async function setupExplorer(currentSlug: FullSlug) {
       fragment.appendChild(node)
     }
     explorerUl.insertBefore(fragment, explorerUl.firstChild)
+
+    // attach filter input handler (live-search)
+    const searchInput = explorer.querySelector('.explorer-search input') as HTMLInputElement | null
+    if (searchInput) {
+      const onInput = (ev: Event) => {
+        const q = (ev.target as HTMLInputElement).value.trim()
+        filterExplorer(explorerUl, q)
+      }
+      searchInput.addEventListener('input', onInput)
+      window.addCleanup(() => searchInput.removeEventListener('input', onInput))
+    }
 
     // restore explorer scrollTop position if it exists
     const scrollTop = sessionStorage.getItem("explorerScrollTop")

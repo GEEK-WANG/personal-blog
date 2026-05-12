@@ -120,6 +120,13 @@ export default ((userOpts?: Partial<Options>) => {
           </svg>
         </button>
         <div id={id} class="explorer-content" aria-expanded={false} role="group">
+          <div class="explorer-search" role="search">
+            <input
+              type="search"
+              placeholder={i18n(cfg.locale).components.explorer.filterPlaceholder || "筛选"}
+              aria-label={i18n(cfg.locale).components.explorer.filterPlaceholder || "筛选"}
+            />
+          </div>
           <OverflowList class="explorer-ul" />
         </div>
         <template id="template-file">
